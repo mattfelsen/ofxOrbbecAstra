@@ -15,12 +15,12 @@ class FrameListener : public astra::FrameReadyListener {
 
 public:
 
-	astra::StreamSet streamset;
-	astra::StreamReader reader;
+	unique_ptr<astra::StreamSet> streamset;
+	unique_ptr<astra::StreamReader> reader;
 
 	// Looks like the StreamReader needs to get intialized to NULL since it
 	// keeps a ReaderRefPtr?
-	FrameListener() : reader(NULL) {
+	FrameListener() : streamset(nullptr), reader(nullptr) {
 	}
 
 	~FrameListener(){
@@ -30,9 +30,10 @@ public:
 	void setup(){
 		astra::Astra::initialize();
 
-		reader = streamset.create_reader();
-		reader.stream<astra::ColorStream>().start();
-		reader.addListener(*this);
+		streamset = make_unique<astra::StreamSet>();
+		reader = make_unique<astra::StreamReader>(streamset->create_reader());
+		reader->stream<astra::ColorStream>().start();
+		reader->addListener(*this);
 	}
 
 	void update(){
