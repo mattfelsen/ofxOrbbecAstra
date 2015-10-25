@@ -16,7 +16,8 @@ public:
 	}
 	
 	void draw(){
-
+		ofSetColor(ofColor::white);
+		listener.draw();
 	}
 
 	FrameListener listener;

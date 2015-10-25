@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "ofMain.h"
 #include <Astra/Astra.h>
 #include <AstraUL/AstraUL.h>
 
@@ -15,11 +16,6 @@ class FrameListener : public astra::FrameReadyListener {
 
 public:
 
-	unique_ptr<astra::StreamSet> streamset;
-	unique_ptr<astra::StreamReader> reader;
-
-	// Looks like the StreamReader needs to get intialized to NULL since it
-	// keeps a ReaderRefPtr?
 	FrameListener() : streamset(nullptr), reader(nullptr) {
 	}
 
@@ -38,6 +34,10 @@ public:
 
 	void update(){
 		astra_temp_update();
+	}
+
+	void draw(){
+		img.draw(0, 0);
 	}
 
 
@@ -69,10 +69,33 @@ public:
 	{
 		astra::ColorFrame colorFrame = frame.get<astra::ColorFrame>();
 
+		int width = colorFrame.resolutionX();
+		int height = colorFrame.resolutionY();
+
+		img.allocate(width, height, OF_IMAGE_GRAYSCALE);
+        const astra_rgb_pixel_t* colorData = colorFrame.data();
+
 		if (colorFrame.is_valid())
 		{
-			print_color(colorFrame);
+//			print_color(colorFrame);
+
+			for (int i = 0; i < width * height; i++)
+			{
+				ofColor c;
+				c.r = static_cast<int>(colorData[i].r);
+				c.g = static_cast<int>(colorData[i].g);
+				c.b = static_cast<int>(colorData[i].b);
+				img.setColor(i, c);
+			}
+			img.update();
 		}
 	}
+
+protected:
+
+	unique_ptr<astra::StreamSet> streamset;
+	unique_ptr<astra::StreamReader> reader;
+
+	ofImage img;
 
 };
