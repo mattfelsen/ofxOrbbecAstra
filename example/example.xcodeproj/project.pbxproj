@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C978E0741BDC1E0100E860EB /* libsfml-graphics.2.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C978E0731BDC1E0100E860EB /* libsfml-graphics.2.3.0.dylib */; };
 		C978E0761BDC1E2800E860EB /* libAstra.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C978E0751BDC1E2800E860EB /* libAstra.dylib */; };
 		C978E0791BDC1E3800E860EB /* libAstraAPI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C978E0771BDC1E3800E860EB /* libAstraAPI.dylib */; };
 		C978E07A1BDC1E3800E860EB /* libAstraUL.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C978E0781BDC1E3800E860EB /* libAstraUL.dylib */; };
@@ -45,7 +44,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C978E0731BDC1E0100E860EB /* libsfml-graphics.2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.3.0.dylib"; path = "../../../../../../../../../usr/local/Cellar/sfml/2.3_1/lib/libsfml-graphics.2.3.0.dylib"; sourceTree = "<group>"; };
 		C978E0751BDC1E2800E860EB /* libAstra.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAstra.dylib; path = "../../../../../AstraSDK-0.4.0/lib/libAstra.dylib"; sourceTree = "<group>"; };
 		C978E0771BDC1E3800E860EB /* libAstraAPI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAstraAPI.dylib; path = "../../../../../AstraSDK-0.4.0/lib/libAstraAPI.dylib"; sourceTree = "<group>"; };
 		C978E0781BDC1E3800E860EB /* libAstraUL.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAstraUL.dylib; path = "../../../../../AstraSDK-0.4.0/lib/libAstraUL.dylib"; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				C978E0791BDC1E3800E860EB /* libAstraAPI.dylib in Frameworks */,
 				C978E07A1BDC1E3800E860EB /* libAstraUL.dylib in Frameworks */,
 				C978E0761BDC1E2800E860EB /* libAstra.dylib in Frameworks */,
-				C978E0741BDC1E0100E860EB /* libsfml-graphics.2.3.0.dylib in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +100,6 @@
 				C978E0771BDC1E3800E860EB /* libAstraAPI.dylib */,
 				C978E0781BDC1E3800E860EB /* libAstraUL.dylib */,
 				C978E0751BDC1E2800E860EB /* libAstra.dylib */,
-				C978E0731BDC1E0100E860EB /* libsfml-graphics.2.3.0.dylib */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -309,19 +305,15 @@
 				GCC_MODEL_TUNING = NONE;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					"/Users/matt/Documents/Code/AstraSDK-0.4.0/include",
+					../include,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/lib/,
-					/usr/local/Cellar/sfml/2.3_1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
-				USER_HEADER_SEARCH_PATHS = /usr/local/include;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -341,19 +333,15 @@
 				GCC_MODEL_TUNING = NONE;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					"/Users/matt/Documents/Code/AstraSDK-0.4.0/include",
+					../include,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/lib/,
-					/usr/local/Cellar/sfml/2.3_1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = /usr/local/include;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};
