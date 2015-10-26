@@ -8,6 +8,7 @@ class ofApp : public ofBaseApp{
 public:
 	
 	void setup(){
+		ofSetWindowShape(640*2, 480);
 		listener.setup();
 	}
 
