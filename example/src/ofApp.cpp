@@ -19,5 +19,6 @@ void ofApp::update(){
 
 void ofApp::draw(){
     ofSetColor(ofColor::white);
-    astra.draw();
+    astra.draw(0, 0);
+    astra.drawDepth(640, 0);
 }

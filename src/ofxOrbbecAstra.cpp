@@ -8,20 +8,22 @@
 
 #include "ofxOrbbecAstra.h"
 
-ofxOrbbecAstra::ofxOrbbecAstra() :
-    streamset(nullptr),
-    reader(nullptr)
-{}
+ofxOrbbecAstra::ofxOrbbecAstra() {
+    streamset = nullptr;
+    reader = nullptr;
+    width = 640;
+    height = 480;
+}
 
 ofxOrbbecAstra::~ofxOrbbecAstra(){
     astra::Astra::terminate();
 }
 
 void ofxOrbbecAstra::setup(){
-    int width = 640;
-    int height = 480;
-    colorImg.allocate(width, height, OF_IMAGE_COLOR);
-    depthImg.allocate(width, height, OF_IMAGE_GRAYSCALE);
+    colorImage.allocate(width, height, OF_IMAGE_COLOR);
+    depthImage.allocate(width, height, OF_IMAGE_GRAYSCALE);
+    depthPixels.allocate(width, height, OF_IMAGE_GRAYSCALE);
+    cachedCoords.resize(width * height);
 
     astra::Astra::initialize();
 
@@ -44,13 +46,17 @@ void ofxOrbbecAstra::setup(){
     astra::ImageStreamMode depthMode;
     auto depthStream = reader->stream<astra::DepthStream>();
 
-    depthMode.set_width(640);
-    depthMode.set_height(480);
+    depthMode.set_width(width);
+    depthMode.set_height(height);
     depthMode.set_pixelFormat(astra_pixel_formats::ASTRA_PIXEL_FORMAT_DEPTH_MM);
     depthMode.set_fps(30);
 
     depthStream.set_mode(depthMode);
+    depthStream.enable_registration(true);
     depthStream.start();
+
+    // set up point stream
+    reader->stream<astra::PointStream>().start();
 
     reader->addListener(*this);
 }
@@ -60,9 +66,16 @@ void ofxOrbbecAstra::update(){
     astra_temp_update();
 }
 
-void ofxOrbbecAstra::draw(){
-    colorImg.draw(0, 0);
-    depthImg.draw(640, 0);
+void ofxOrbbecAstra::draw(float x, float y, float w, float h){
+    if (!w) w = width;
+    if (!h) h = height;
+    colorImage.draw(x, y, w, h);
+}
+
+void ofxOrbbecAstra::drawDepth(float x, float y, float w, float h){
+    if (!w) w = width;
+    if (!h) h = height;
+    depthImage.draw(x, y, w, h);
 }
 
 void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
@@ -70,23 +83,45 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 {
     astra::ColorFrame colorFrame = frame.get<astra::ColorFrame>();
     astra::DepthFrame depthFrame = frame.get<astra::DepthFrame>();
+    astra::PointFrame pointFrame = frame.get<astra::PointFrame>();
 
     if (colorFrame.is_valid()) {
         const astra::RGBPixel* colorData = colorFrame.data();
-        colorFrame.copy_to((astra::RGBPixel*) colorImg.getPixels().getData());
-        colorImg.update();
+        colorFrame.copy_to((astra::RGBPixel*) colorImage.getPixels().getData());
+        colorImage.update();
     }
 
     if (depthFrame.is_valid()) {
         const short* depthData = depthFrame.data();
-        depthFrame.copy_to((short*) depthImg.getPixels().getData());
+        depthFrame.copy_to((short*) depthPixels.getData());
 
-        for (int i = 0; i < depthImg.getPixels().size(); i++) {
-            short depth = depthImg.getColor(i).r;
+        for (int i = 0; i < depthPixels.size(); i++) {
+            short depth = depthPixels.getColor(i).r;
             float val = (depth != 0) ? ofMap(depth, 1800, 300, 0, 255, true) : 0;
-            depthImg.setColor(i, ofColor(val));
+            depthImage.setColor(i, ofColor(val));
         }
         
-        depthImg.update();
+        depthImage.update();
     }
+
+    if (pointFrame.is_valid()) {
+        const astra::Vector3f* pointData = pointFrame.data();
+        pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
+    }
+}
+
+ofVec3f ofxOrbbecAstra::getWorldCoordinateAt(int x, int y) {
+    return cachedCoords[int(y) * width + int(x)];
+}
+
+ofShortPixels& ofxOrbbecAstra::getRawDepth() {
+    return depthPixels;
+}
+
+ofImage& ofxOrbbecAstra::getDepthImage() {
+    return depthImage;
+}
+
+ofImage& ofxOrbbecAstra::getColorImage() {
+    return colorImage;
 }

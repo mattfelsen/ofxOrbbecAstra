@@ -21,7 +21,15 @@ public:
 
     void setup();
     void update();
-    void draw();
+
+    void draw(float x = 0, float y = 0, float w = 0, float h = 0);
+    void drawDepth(float x = 0, float y = 0, float w = 0, float h = 0);
+
+    ofVec3f getWorldCoordinateAt(int x, int y);
+
+    ofShortPixels& getRawDepth();
+    ofImage& getDepthImage();
+    ofImage& getColorImage();
 
     virtual void on_frame_ready(astra::StreamReader& reader,
                                 astra::Frame& frame) override;
@@ -31,7 +39,13 @@ protected:
 	unique_ptr<astra::StreamSet> streamset;
 	unique_ptr<astra::StreamReader> reader;
 
-	ofImage colorImg;
-	ofShortImage depthImg;
+    int width;
+    int height;
+
+    ofShortPixels depthPixels;
+    ofImage depthImage;
+    ofImage colorImage;
+
+    vector<ofVec3f> cachedCoords;
 
 };
