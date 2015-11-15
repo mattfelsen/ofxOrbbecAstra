@@ -19,6 +19,15 @@ public:
     void update();
     void draw();
 
+    void keyPressed(int key);
+
 	ofxOrbbecAstra astra;
+
+    ofMesh mesh;
+    ofEasyCam cam;
+
+    bool bDrawPointCloud;
+    bool bPointCloudUseColor;
+    bool bUseRegistration;
 
 };
