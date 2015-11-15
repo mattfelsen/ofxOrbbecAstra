@@ -135,7 +135,19 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 
     if (pointFrame.is_valid()) {
         const astra::Vector3f* pointData = pointFrame.data();
-        pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
+
+        // TODO: Figure out pointFrame.copy_to() isn't working
+        // pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
+
+        int w = pointFrame.resolutionX();
+        int h = pointFrame.resolutionY();
+
+        for (int y = 0; y < h; y++) {
+            for (int x = 0; x < w; x++) {
+                int index = (y * w) + x;
+                cachedCoords[index].set(pointData[index].x, pointData[index].y, pointData[index].z);
+            }
+        }
     }
 }
 
