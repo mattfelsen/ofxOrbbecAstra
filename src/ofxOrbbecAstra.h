@@ -20,6 +20,12 @@ public:
     ~ofxOrbbecAstra();
 
     void setup();
+    void setRegistration(bool useRegistration);
+
+    void initColorStream();
+    void initDepthStream();
+    void initPointStream();
+
     void update();
 
     void draw(float x = 0, float y = 0, float w = 0, float h = 0);
@@ -31,13 +37,15 @@ public:
     ofImage& getDepthImage();
     ofImage& getColorImage();
 
+protected:
+
     virtual void on_frame_ready(astra::StreamReader& reader,
                                 astra::Frame& frame) override;
 
-protected:
+    unique_ptr<astra::StreamSet> streamset;
+    unique_ptr<astra::StreamReader> reader;
 
-	unique_ptr<astra::StreamSet> streamset;
-	unique_ptr<astra::StreamReader> reader;
+    bool bSetup;
 
     int width;
     int height;

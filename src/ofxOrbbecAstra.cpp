@@ -30,7 +30,27 @@ void ofxOrbbecAstra::setup(){
     streamset = make_unique<astra::StreamSet>();
     reader = make_unique<astra::StreamReader>(streamset->create_reader());
 
-    // set up color stream
+    if (streamset != nullptr && reader != nullptr) {
+        bSetup = true;
+        reader->addListener(*this);
+    }
+}
+
+void ofxOrbbecAstra::setRegistration(bool useRegistration) {
+    if (!bSetup) {
+        ofLogWarning("ofxOrbbecAstra") << "Must call setup() before setRegistration()";
+        return;
+    }
+
+    reader->stream<astra::DepthStream>().enable_registration(useRegistration);
+}
+
+void ofxOrbbecAstra::initColorStream() {
+    if (!bSetup) {
+        ofLogWarning("ofxOrbbecAstra") << "Must call setup() before initColorStream()";
+        return;
+    }
+
     astra::ImageStreamMode colorMode;
     auto colorStream = reader->stream<astra::ColorStream>();
 
@@ -41,8 +61,14 @@ void ofxOrbbecAstra::setup(){
 
     colorStream.set_mode(colorMode);
     colorStream.start();
+}
 
-    // set up depth stream
+void ofxOrbbecAstra::initDepthStream() {
+    if (!bSetup) {
+        ofLogWarning("ofxOrbbecAstra") << "Must call setup() before initDepthStream()";
+        return;
+    }
+
     astra::ImageStreamMode depthMode;
     auto depthStream = reader->stream<astra::DepthStream>();
 
@@ -52,13 +78,16 @@ void ofxOrbbecAstra::setup(){
     depthMode.set_fps(30);
 
     depthStream.set_mode(depthMode);
-    depthStream.enable_registration(true);
     depthStream.start();
+}
 
-    // set up point stream
+void ofxOrbbecAstra::initPointStream() {
+    if (!bSetup) {
+        ofLogWarning("ofxOrbbecAstra") << "Must call setup() before initPointStream()";
+        return;
+    }
+
     reader->stream<astra::PointStream>().start();
-
-    reader->addListener(*this);
 }
 
 void ofxOrbbecAstra::update(){
@@ -81,9 +110,9 @@ void ofxOrbbecAstra::drawDepth(float x, float y, float w, float h){
 void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
                                     astra::Frame& frame)
 {
-    astra::ColorFrame colorFrame = frame.get<astra::ColorFrame>();
-    astra::DepthFrame depthFrame = frame.get<astra::DepthFrame>();
-    astra::PointFrame pointFrame = frame.get<astra::PointFrame>();
+    auto colorFrame = frame.get<astra::ColorFrame>();
+    auto depthFrame = frame.get<astra::DepthFrame>();
+    auto pointFrame = frame.get<astra::PointFrame>();
 
     if (colorFrame.is_valid()) {
         const astra::RGBPixel* colorData = colorFrame.data();
