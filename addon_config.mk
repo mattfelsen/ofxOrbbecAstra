@@ -7,7 +7,6 @@ meta:
 
 common:
 	ADDON_INCLUDES = libs/astra/include/
-	ADDON_INCLUDES_EXCLUDE = libs/astra/lib/
 
 osx:
 	# Only needs to link with these three libs, not any of the Plugins folder
