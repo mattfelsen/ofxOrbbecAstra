@@ -1,26 +1,24 @@
+//
+//  ofApp.cpp
+//  example
+//
+//  Created by Matt Felsen on 11/15/15.
+//
+//
+
 #pragma once
 
 #include "ofMain.h"
-#include "FrameListener.h"
+#include "ofxOrbbecAstra.h"
 
 class ofApp : public ofBaseApp{
 
 public:
 	
-	void setup(){
-		ofSetWindowShape(640*2, 480);
-		listener.setup();
-	}
+    void setup();
+    void update();
+    void draw();
 
-	void update(){
-		listener.update();
-	}
-	
-	void draw(){
-		ofSetColor(ofColor::white);
-		listener.draw();
-	}
-
-	FrameListener listener;
+	ofxOrbbecAstra astra;
 
 };
