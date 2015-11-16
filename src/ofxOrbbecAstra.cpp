@@ -13,6 +13,8 @@ ofxOrbbecAstra::ofxOrbbecAstra() {
     reader = nullptr;
     width = 640;
     height = 480;
+    bSetup = false;
+    bIsFrameNew = false;
 }
 
 ofxOrbbecAstra::~ofxOrbbecAstra(){
@@ -93,6 +95,7 @@ void ofxOrbbecAstra::initPointStream() {
 
 void ofxOrbbecAstra::update(){
     // See on_frame_ready() for more processing
+    bIsFrameNew = false;
     astra_temp_update();
 }
 
@@ -108,9 +111,15 @@ void ofxOrbbecAstra::drawDepth(float x, float y, float w, float h){
     depthImage.draw(x, y, w, h);
 }
 
+bool ofxOrbbecAstra::isFrameNew() {
+    return bIsFrameNew;
+}
+
 void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
                                     astra::Frame& frame)
 {
+    bIsFrameNew = true;
+    
     auto colorFrame = frame.get<astra::ColorFrame>();
     auto depthFrame = frame.get<astra::DepthFrame>();
     auto pointFrame = frame.get<astra::PointFrame>();

@@ -27,6 +27,7 @@ public:
     void initPointStream();
 
     void update();
+    bool isFrameNew();
 
     void draw(float x = 0, float y = 0, float w = 0, float h = 0);
     void drawDepth(float x = 0, float y = 0, float w = 0, float h = 0);
@@ -50,6 +51,7 @@ protected:
     int width;
     int height;
     bool bSetup;
+    bool bIsFrameNew;
 
     ofShortPixels depthPixels;
     ofImage depthImage;

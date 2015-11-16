@@ -23,7 +23,7 @@ public:
 
 	ofxOrbbecAstra astra;
 
-    ofMesh mesh;
+    ofVboMesh mesh;
     ofEasyCam cam;
 
     bool bDrawPointCloud;

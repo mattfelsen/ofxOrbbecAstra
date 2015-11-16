@@ -29,7 +29,7 @@ void ofApp::update(){
 
     astra.update();
 
-    if (bDrawPointCloud) {
+    if (astra.isFrameNew() && bDrawPointCloud) {
         mesh.clear();
 
         int maxDepth = 1500;
