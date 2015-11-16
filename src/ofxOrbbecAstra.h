@@ -42,18 +42,20 @@ protected:
     virtual void on_frame_ready(astra::StreamReader& reader,
                                 astra::Frame& frame) override;
 
+    void updateDepthLookupTable();
+
     unique_ptr<astra::StreamSet> streamset;
     unique_ptr<astra::StreamReader> reader;
 
-    bool bSetup;
-
     int width;
     int height;
+    bool bSetup;
 
     ofShortPixels depthPixels;
     ofImage depthImage;
     ofImage colorImage;
 
+    vector<char> depthLookupTable;
     vector<ofVec3f> cachedCoords;
 
 };

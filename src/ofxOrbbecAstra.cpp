@@ -24,6 +24,7 @@ void ofxOrbbecAstra::setup(){
     depthImage.allocate(width, height, OF_IMAGE_GRAYSCALE);
     depthPixels.allocate(width, height, OF_IMAGE_GRAYSCALE);
     cachedCoords.resize(width * height);
+    updateDepthLookupTable();
 
     astra::Astra::initialize();
 
@@ -124,9 +125,10 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
         const short* depthData = depthFrame.data();
         depthFrame.copy_to((short*) depthPixels.getData());
 
+        // TODO do this with a shader so it's fast?
         for (int i = 0; i < depthPixels.size(); i++) {
             short depth = depthPixels.getColor(i).r;
-            float val = (depth != 0) ? ofMap(depth, 1800, 300, 0, 255, true) : 0;
+            float val = depthLookupTable[depth];
             depthImage.setColor(i, ofColor(val));
         }
         
@@ -149,6 +151,21 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
             }
         }
     }
+}
+
+void ofxOrbbecAstra::updateDepthLookupTable() {
+    // From product spaces, range is 8m
+    int maxDepth = 8000;
+    depthLookupTable.resize(maxDepth);
+
+    // Depth values of 0 should be discarded, so set the LUT value to 0 as well
+    depthLookupTable[0] = 0;
+
+    // Set the rest
+    for (int i = 1; i < maxDepth; i++) {
+        depthLookupTable[i] = ofMap(i, 300, 1800, 255, 0, true);
+    }
+
 }
 
 ofVec3f ofxOrbbecAstra::getWorldCoordinateAt(int x, int y) {
