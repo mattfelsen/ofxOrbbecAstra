@@ -140,16 +140,7 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 
         // TODO: Figure out pointFrame.copy_to() isn't working
         // pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
-
-        int w = pointFrame.resolutionX();
-        int h = pointFrame.resolutionY();
-
-        for (int y = 0; y < h; y++) {
-            for (int x = 0; x < w; x++) {
-                int index = (y * w) + x;
-                cachedCoords[index].set(pointData[index].x, pointData[index].y, pointData[index].z);
-            }
-        }
+        memcpy(cachedCoords.data(), pointData, cachedCoords.size() * sizeof(ofVec3f));
     }
 }
 
