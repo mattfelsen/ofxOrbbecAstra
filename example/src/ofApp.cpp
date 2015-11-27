@@ -18,7 +18,7 @@ void ofApp::setup(){
     mesh.setMode(OF_PRIMITIVE_POINTS);
 
     astra.setup();
-    astra.setRegistration(bUseRegistration);
+    astra.enableRegistration(bUseRegistration);
     astra.initColorStream();
     astra.initDepthStream();
     astra.initPointStream();
@@ -92,6 +92,6 @@ void ofApp::keyPressed(int key){
         bPointCloudUseColor ^= 1;
     if (key == 'r') {
         bUseRegistration ^= 1;
-        astra.setRegistration(bUseRegistration);
+        astra.enableRegistration(bUseRegistration);
     }
 }

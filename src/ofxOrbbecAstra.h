@@ -20,8 +20,8 @@ public:
     ~ofxOrbbecAstra();
 
     void setup();
-    void setRegistration(bool useRegistration);
     void enableDepthImage(bool enable);
+    void enableRegistration(bool useRegistration);
 
     void initColorStream();
     void initDepthStream();

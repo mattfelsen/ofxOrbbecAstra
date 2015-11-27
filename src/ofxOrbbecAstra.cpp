@@ -40,11 +40,11 @@ void ofxOrbbecAstra::setup(){
     }
 }
 
-void ofxOrbbecAstra::setRegistration(bool useRegistration) {
 void ofxOrbbecAstra::enableDepthImage(bool enable) {
     bDepthImageEnabled = enable;
 }
 
+void ofxOrbbecAstra::enableRegistration(bool useRegistration) {
     if (!bSetup) {
         ofLogWarning("ofxOrbbecAstra") << "Must call setup() before setRegistration()";
         return;
