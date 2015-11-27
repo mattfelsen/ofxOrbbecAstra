@@ -130,13 +130,11 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
     auto pointFrame = frame.get<astra::PointFrame>();
 
     if (colorFrame.is_valid()) {
-        const astra::RGBPixel* colorData = colorFrame.data();
         colorFrame.copy_to((astra::RGBPixel*) colorImage.getPixels().getData());
         colorImage.update();
     }
 
     if (depthFrame.is_valid()) {
-        const short* depthData = depthFrame.data();
         depthFrame.copy_to((short*) depthPixels.getData());
 
         if (bDepthImageEnabled) {
@@ -152,11 +150,9 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
     }
 
     if (pointFrame.is_valid()) {
-        const astra::Vector3f* pointData = pointFrame.data();
-
-        // TODO: Figure out pointFrame.copy_to() isn't working
+        // TODO: Figure out why pointFrame.copy_to() isn't working
         // pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
-        memcpy(cachedCoords.data(), pointData, cachedCoords.size() * sizeof(ofVec3f));
+        memcpy(cachedCoords.data(), pointFrame.data(), cachedCoords.size() * sizeof(ofVec3f));
     }
 }
 
