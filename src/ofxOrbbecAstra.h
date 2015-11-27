@@ -21,6 +21,7 @@ public:
 
     void setup();
     void setRegistration(bool useRegistration);
+    void enableDepthImage(bool enable);
 
     void initColorStream();
     void initDepthStream();
@@ -52,6 +53,7 @@ protected:
     int height;
     bool bSetup;
     bool bIsFrameNew;
+    bool bDepthImageEnabled;
 
     ofShortPixels depthPixels;
     ofImage depthImage;

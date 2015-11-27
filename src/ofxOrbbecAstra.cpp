@@ -15,6 +15,7 @@ ofxOrbbecAstra::ofxOrbbecAstra() {
     height = 480;
     bSetup = false;
     bIsFrameNew = false;
+    bDepthImageEnabled = true;
 }
 
 ofxOrbbecAstra::~ofxOrbbecAstra(){
@@ -40,6 +41,10 @@ void ofxOrbbecAstra::setup(){
 }
 
 void ofxOrbbecAstra::setRegistration(bool useRegistration) {
+void ofxOrbbecAstra::enableDepthImage(bool enable) {
+    bDepthImageEnabled = enable;
+}
+
     if (!bSetup) {
         ofLogWarning("ofxOrbbecAstra") << "Must call setup() before setRegistration()";
         return;
@@ -134,14 +139,16 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
         const short* depthData = depthFrame.data();
         depthFrame.copy_to((short*) depthPixels.getData());
 
-        // TODO do this with a shader so it's fast?
-        for (int i = 0; i < depthPixels.size(); i++) {
-            short depth = depthPixels.getColor(i).r;
-            float val = depthLookupTable[depth];
-            depthImage.setColor(i, ofColor(val));
+        if (bDepthImageEnabled) {
+            // TODO do this with a shader so it's fast?
+            for (int i = 0; i < depthPixels.size(); i++) {
+                short depth = depthPixels.getColor(i).r;
+                float val = depthLookupTable[depth];
+                depthImage.setColor(i, ofColor(val));
+            }
+
+            depthImage.update();
         }
-        
-        depthImage.update();
     }
 
     if (pointFrame.is_valid()) {
