@@ -11,8 +11,12 @@
 ofxOrbbecAstra::ofxOrbbecAstra() {
     streamset = nullptr;
     reader = nullptr;
+
     width = 640;
     height = 480;
+    nearClip = 300;
+    farClip = 1800;
+
     bSetup = false;
     bIsFrameNew = false;
     bDepthImageEnabled = true;
@@ -51,6 +55,12 @@ void ofxOrbbecAstra::enableRegistration(bool useRegistration) {
     }
 
     reader->stream<astra::DepthStream>().enable_registration(useRegistration);
+}
+
+void ofxOrbbecAstra::setDepthClipping(unsigned short near, unsigned short far) {
+    nearClip = near;
+    farClip = far;
+    updateDepthLookupTable();
 }
 
 void ofxOrbbecAstra::initColorStream() {
@@ -144,20 +154,21 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
                 float val = depthLookupTable[depth];
                 depthImage.setColor(i, ofColor(val));
             }
-
             depthImage.update();
         }
     }
 
     if (pointFrame.is_valid()) {
         // TODO: Figure out why pointFrame.copy_to() isn't working
+        // Update: This is a known bug in the 0.4.0 SDK, use memcpy() for now
+        // https://3dclub.orbbec3d.com/t/copy-to-not-working-properly-for-pointframe/127
         // pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
         memcpy(cachedCoords.data(), pointFrame.data(), cachedCoords.size() * sizeof(ofVec3f));
     }
 }
 
 void ofxOrbbecAstra::updateDepthLookupTable() {
-    // From product spaces, range is 8m
+    // From product specs, range is 8m
     int maxDepth = 8000;
     depthLookupTable.resize(maxDepth);
 
@@ -166,13 +177,21 @@ void ofxOrbbecAstra::updateDepthLookupTable() {
 
     // Set the rest
     for (int i = 1; i < maxDepth; i++) {
-        depthLookupTable[i] = ofMap(i, 300, 1800, 255, 0, true);
+        depthLookupTable[i] = ofMap(i, nearClip, farClip, 255, 0, true);
     }
 
 }
 
 ofVec3f ofxOrbbecAstra::getWorldCoordinateAt(int x, int y) {
     return cachedCoords[int(y) * width + int(x)];
+}
+
+unsigned short ofxOrbbecAstra::getNearClip() {
+    return nearClip;
+}
+
+unsigned short ofxOrbbecAstra::getFarClip() {
+    return farClip;
 }
 
 ofShortPixels& ofxOrbbecAstra::getRawDepth() {

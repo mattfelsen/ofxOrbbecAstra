@@ -22,6 +22,7 @@ public:
     void setup();
     void enableDepthImage(bool enable);
     void enableRegistration(bool useRegistration);
+    void setDepthClipping(unsigned short near, unsigned short far);
 
     void initColorStream();
     void initDepthStream();
@@ -34,6 +35,9 @@ public:
     void drawDepth(float x = 0, float y = 0, float w = 0, float h = 0);
 
     ofVec3f getWorldCoordinateAt(int x, int y);
+
+    unsigned short getNearClip();
+    unsigned short getFarClip();
 
     ofShortPixels& getRawDepth();
     ofImage& getDepthImage();
@@ -54,6 +58,8 @@ protected:
     bool bSetup;
     bool bIsFrameNew;
     bool bDepthImageEnabled;
+    unsigned short nearClip;
+    unsigned short farClip;
 
     ofShortPixels depthPixels;
     ofImage depthImage;
