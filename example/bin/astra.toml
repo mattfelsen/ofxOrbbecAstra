@@ -1,5 +1,0 @@
-[logging]
-# trace, debug, info, warn, error, fatal
-#level = "warn"
-[plugins]
-#path = "Plugins"

@@ -9,10 +9,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include <Astra/Astra.h>
-#include <AstraUL/AstraUL.h>
+#include <astra/astra.hpp>
 
-class ofxOrbbecAstra : public astra::FrameReadyListener {
+class ofxOrbbecAstra : public astra::FrameListener {
 
 public:
 
@@ -46,12 +45,12 @@ public:
 protected:
 
 	virtual void on_frame_ready(astra::StreamReader& reader,
-								astra::Frame& frame) override;
+		astra::Frame& frame) override;
 
 	void updateDepthLookupTable();
 
-	unique_ptr<astra::StreamSet> streamset;
-	unique_ptr<astra::StreamReader> reader;
+	astra::StreamSet streamset;
+	astra::StreamReader reader;
 
 	int width;
 	int height;

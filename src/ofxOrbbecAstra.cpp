@@ -9,9 +9,6 @@
 #include "ofxOrbbecAstra.h"
 
 ofxOrbbecAstra::ofxOrbbecAstra() {
-	streamset = nullptr;
-	reader = nullptr;
-
 	width = 640;
 	height = 480;
 	nearClip = 300;
@@ -23,7 +20,7 @@ ofxOrbbecAstra::ofxOrbbecAstra() {
 }
 
 ofxOrbbecAstra::~ofxOrbbecAstra(){
-	astra::Astra::terminate();
+	astra::terminate();
 }
 
 void ofxOrbbecAstra::setup(){
@@ -33,15 +30,13 @@ void ofxOrbbecAstra::setup(){
 	cachedCoords.resize(width * height);
 	updateDepthLookupTable();
 
-	astra::Astra::initialize();
+	astra::initialize();
 
-	streamset = make_unique<astra::StreamSet>();
-	reader = make_unique<astra::StreamReader>(streamset->create_reader());
+	streamset = astra::StreamSet();
+	reader = astra::StreamReader(streamset.create_reader());
 
-	if (streamset != nullptr && reader != nullptr) {
-		bSetup = true;
-		reader->addListener(*this);
-	}
+	bSetup = true;
+	reader.add_listener(*this);
 }
 
 void ofxOrbbecAstra::enableDepthImage(bool enable) {
@@ -54,7 +49,7 @@ void ofxOrbbecAstra::enableRegistration(bool useRegistration) {
 		return;
 	}
 
-	reader->stream<astra::DepthStream>().enable_registration(useRegistration);
+	reader.stream<astra::DepthStream>().enable_registration(useRegistration);
 }
 
 void ofxOrbbecAstra::setDepthClipping(unsigned short near, unsigned short far) {
@@ -70,11 +65,11 @@ void ofxOrbbecAstra::initColorStream() {
 	}
 
 	astra::ImageStreamMode colorMode;
-	auto colorStream = reader->stream<astra::ColorStream>();
+	auto colorStream = reader.stream<astra::ColorStream>();
 
 	colorMode.set_width(width);
 	colorMode.set_height(height);
-	colorMode.set_pixelFormat(astra_pixel_formats::ASTRA_PIXEL_FORMAT_RGB888);
+	colorMode.set_pixel_format(astra_pixel_formats::ASTRA_PIXEL_FORMAT_RGB888);
 	colorMode.set_fps(30);
 
 	colorStream.set_mode(colorMode);
@@ -88,11 +83,11 @@ void ofxOrbbecAstra::initDepthStream() {
 	}
 
 	astra::ImageStreamMode depthMode;
-	auto depthStream = reader->stream<astra::DepthStream>();
+	auto depthStream = reader.stream<astra::DepthStream>();
 
 	depthMode.set_width(width);
 	depthMode.set_height(height);
-	depthMode.set_pixelFormat(astra_pixel_formats::ASTRA_PIXEL_FORMAT_DEPTH_MM);
+	depthMode.set_pixel_format(astra_pixel_formats::ASTRA_PIXEL_FORMAT_DEPTH_MM);
 	depthMode.set_fps(30);
 
 	depthStream.set_mode(depthMode);
@@ -105,7 +100,7 @@ void ofxOrbbecAstra::initPointStream() {
 		return;
 	}
 
-	reader->stream<astra::PointStream>().start();
+	reader.stream<astra::PointStream>().start();
 }
 
 void ofxOrbbecAstra::update(){
@@ -140,7 +135,7 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 	auto pointFrame = frame.get<astra::PointFrame>();
 
 	if (colorFrame.is_valid()) {
-		colorFrame.copy_to((astra::RGBPixel*) colorImage.getPixels().getData());
+		colorFrame.copy_to((astra::RgbPixel*) colorImage.getPixels().getData());
 		colorImage.update();
 	}
 
@@ -159,11 +154,7 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 	}
 
 	if (pointFrame.is_valid()) {
-		// TODO: Figure out why pointFrame.copy_to() isn't working
-		// Update: This is a known bug in the 0.4.0 SDK, use memcpy() for now
-		// https://3dclub.orbbec3d.com/t/copy-to-not-working-properly-for-pointframe/127
-		// pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
-		memcpy(cachedCoords.data(), pointFrame.data(), cachedCoords.size() * sizeof(ofVec3f));
+		pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
 	}
 }
 

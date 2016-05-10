@@ -14,6 +14,7 @@ void ofApp::setup(){
 	ofSetVerticalSync(true);
 
 	bDrawPointCloud = false;
+	bPointCloudUseColor = false;
 	bUseRegistration = true;
 	mesh.setMode(OF_PRIMITIVE_POINTS);
 
