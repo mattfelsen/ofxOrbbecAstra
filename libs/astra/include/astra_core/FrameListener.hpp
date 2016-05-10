@@ -14,37 +14,25 @@
 // limitations under the License.
 //
 // Be excellent to each other.
-#ifndef PULSER_H
-#define PULSER_H
+#ifndef ASTRA_FRAMELISTENER_HPP
+#define ASTRA_FRAMELISTENER_HPP
 
-#include "Stopwatch.h"
-#include <string>
+namespace astra {
 
-namespace astra { namespace clock {
+    class StreamReader;
+    class Frame;
 
-    class Pulser
+    class FrameListener
     {
     public:
-        Pulser();
-        ~Pulser();
-
-        void set_period(double period);
-        double get_period();
-
-        void start();
-        void stop();
-
-        void pause();
-        bool is_pulse();
-        void reset();
-
-    private:
-        Stopwatch m_swatch;
-        std::string m_swatchName;
-
-        double m_period{0.0};
+        virtual ~FrameListener() = default;
+        virtual void on_frame_ready(StreamReader& reader, Frame& frame) = 0;
     };
-}}
 
+    inline bool operator==(const FrameListener& l, const FrameListener& r)
+    {
+        return &l == &r;
+    }
+}
 
-#endif /* PULSER_H */
+#endif // ASTRA_FRAMELISTENER_HPP

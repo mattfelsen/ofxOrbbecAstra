@@ -14,37 +14,24 @@
 // limitations under the License.
 //
 // Be excellent to each other.
-#ifndef PULSER_H
-#define PULSER_H
+#ifndef DEPTH_TYPES_H
+#define DEPTH_TYPES_H
 
-#include "Stopwatch.h"
-#include <string>
+#include <astra_core/capi/astra_types.h>
+#include <astra/capi/streams/image_types.h>
 
-namespace astra { namespace clock {
+typedef struct {
+    float xzFactor;
+    float yzFactor;
+    float coeffX;
+    float coeffY;
+    int resolutionX;
+    int resolutionY;
+    int halfResX;
+    int halfResY;
+} conversion_cache_t;
 
-    class Pulser
-    {
-    public:
-        Pulser();
-        ~Pulser();
+typedef astra_streamconnection_t astra_depthstream_t;
+typedef struct _astra_imageframe* astra_depthframe_t;
 
-        void set_period(double period);
-        double get_period();
-
-        void start();
-        void stop();
-
-        void pause();
-        bool is_pulse();
-        void reset();
-
-    private:
-        Stopwatch m_swatch;
-        std::string m_swatchName;
-
-        double m_period{0.0};
-    };
-}}
-
-
-#endif /* PULSER_H */
+#endif // DEPTH_TYPES_H

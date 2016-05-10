@@ -14,37 +14,16 @@
 // limitations under the License.
 //
 // Be excellent to each other.
-#ifndef PULSER_H
-#define PULSER_H
+#ifndef ASTRA_PLUGIN_HPP
+#define ASTRA_PLUGIN_HPP
 
-#include "Stopwatch.h"
-#include <string>
+#include <astra_core/capi/plugins/astra_plugin.h>
+#include <astra_core/StreamServiceProxy.hpp>
+#include <astra_core/plugins/PluginServiceProxy.hpp>
+#include <astra_core/plugins/PluginBase.hpp>
+#include <astra_core/plugins/PluginLogging.hpp>
+#include <astra_core/plugins/StreamCallbackListener.hpp>
+#include <astra_core/plugins/PluginStream.hpp>
+#include <astra_core/plugins/SingleBinStream.hpp>
 
-namespace astra { namespace clock {
-
-    class Pulser
-    {
-    public:
-        Pulser();
-        ~Pulser();
-
-        void set_period(double period);
-        double get_period();
-
-        void start();
-        void stop();
-
-        void pause();
-        bool is_pulse();
-        void reset();
-
-    private:
-        Stopwatch m_swatch;
-        std::string m_swatchName;
-
-        double m_period{0.0};
-    };
-}}
-
-
-#endif /* PULSER_H */
+#endif /* ASTRA_PLUGIN_HPP */

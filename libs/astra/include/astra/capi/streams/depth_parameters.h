@@ -14,37 +14,13 @@
 // limitations under the License.
 //
 // Be excellent to each other.
-#ifndef PULSER_H
-#define PULSER_H
+#ifndef DEPTH_PARAMETERS_H
+#define DEPTH_PARAMETERS_H
 
-#include "Stopwatch.h"
-#include <string>
+enum
+{
+    ASTRA_PARAMETER_DEPTH_CONVERSION_CACHE = 100,
+    ASTRA_PARAMETER_DEPTH_REGISTRATION = 101
+};
 
-namespace astra { namespace clock {
-
-    class Pulser
-    {
-    public:
-        Pulser();
-        ~Pulser();
-
-        void set_period(double period);
-        double get_period();
-
-        void start();
-        void stop();
-
-        void pause();
-        bool is_pulse();
-        void reset();
-
-    private:
-        Stopwatch m_swatch;
-        std::string m_swatchName;
-
-        double m_period{0.0};
-    };
-}}
-
-
-#endif /* PULSER_H */
+#endif /* DEPTH_PARAMETERS_H */

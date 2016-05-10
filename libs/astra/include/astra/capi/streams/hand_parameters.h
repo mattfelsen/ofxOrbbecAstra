@@ -14,37 +14,17 @@
 // limitations under the License.
 //
 // Be excellent to each other.
-#ifndef PULSER_H
-#define PULSER_H
+#ifndef HAND_PARAMETERS_H
+#define HAND_PARAMETERS_H
 
-#include "Stopwatch.h"
-#include <string>
+enum
+{
+    ASTRA_PARAMETER_DEBUG_HAND_VIEW_TYPE = 0,
+    ASTRA_PARAMETER_DEBUG_HAND_USE_MOUSE_PROBE = 1,
+    ASTRA_PARAMETER_DEBUG_HAND_MOUSE_NORM_POSITION = 2,
+    ASTRA_PARAMETER_HAND_INCLUDE_CANDIDATE_POINTS = 3,
+    ASTRA_PARAMETER_DEBUG_HAND_PAUSE_INPUT = 4,
+    ASTRA_PARAMETER_DEBUG_HAND_LOCK_SPAWN_POINT = 5,
+};
 
-namespace astra { namespace clock {
-
-    class Pulser
-    {
-    public:
-        Pulser();
-        ~Pulser();
-
-        void set_period(double period);
-        double get_period();
-
-        void start();
-        void stop();
-
-        void pause();
-        bool is_pulse();
-        void reset();
-
-    private:
-        Stopwatch m_swatch;
-        std::string m_swatchName;
-
-        double m_period{0.0};
-    };
-}}
-
-
-#endif /* PULSER_H */
+#endif /* HAND_PARAMETERS_H */

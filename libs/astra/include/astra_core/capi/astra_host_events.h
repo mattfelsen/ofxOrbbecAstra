@@ -14,37 +14,25 @@
 // limitations under the License.
 //
 // Be excellent to each other.
-#ifndef PULSER_H
-#define PULSER_H
+#ifndef HOST_EVENTS_H
+#define HOST_EVENTS_H
 
-#include "Stopwatch.h"
-#include <string>
+#include "astra_defines.h"
+#include "astra_types.h"
+#include <stddef.h>
+#include <stdint.h>
 
-namespace astra { namespace clock {
+ASTRA_BEGIN_DECLS
 
-    class Pulser
-    {
-    public:
-        Pulser();
-        ~Pulser();
+ASTRA_API astra_status_t astra_notify_host_event(astra_event_id id, const void* data, size_t dataSize);
+ASTRA_API astra_status_t astra_notify_resource_available(const char* resourceURI);
+ASTRA_API astra_status_t astra_notify_resource_unavailable(const char* resourceURI);
 
-        void set_period(double period);
-        double get_period();
+enum {
+    ASTRA_EVENT_RESOURCE_AVAILABLE = 1,
+    ASTRA_EVENT_RESOURCE_UNAVAILABLE = 2
+};
 
-        void start();
-        void stop();
+ASTRA_END_DECLS
 
-        void pause();
-        bool is_pulse();
-        void reset();
-
-    private:
-        Stopwatch m_swatch;
-        std::string m_swatchName;
-
-        double m_period{0.0};
-    };
-}}
-
-
-#endif /* PULSER_H */
+#endif /* HOST_EVENTS_H */

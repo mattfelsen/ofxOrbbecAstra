@@ -1,9 +1,25 @@
+// This file is part of the Orbbec Astra SDK [https://orbbec3d.com]
+// Copyright (c) 2015 Orbbec 3D
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Be excellent to each other.
 #ifndef FRAMESTREAMWRITER_H
 #define FRAMESTREAMWRITER_H
 
-#include <AstraUL/AstraUL.h>
-#include <AstraUL/Plugins/stream_types.h>
-#include <Astra/Plugins/plugin_capi.h>
+#include <astra/astra.hpp>
+#include <astra/capi/streams/stream_types.h>
+#include <astra_core/capi/plugins/astra_plugin.h>
 
 #include "StreamFileModels.h"
 #include "../clock/Stopwatch.h"
@@ -15,7 +31,7 @@ namespace astra { namespace serialization {
 
     FrameOutputStream* open_frame_output_stream(FILE* file);
     void close_frame_output_stream(FrameOutputStream*& stream);
-    
+
     class FrameStreamWriter
     {
     public:
@@ -24,7 +40,7 @@ namespace astra { namespace serialization {
 
         bool begin_write();
         bool end_write();
-        bool write(DepthFrame& depthFrame);
+        bool write(const DepthFrame& depthFrame);
 
     private:
         void stage_frame(astra_frame_t& astraFrame);
