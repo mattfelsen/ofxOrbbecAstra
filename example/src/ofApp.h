@@ -14,20 +14,20 @@
 class ofApp : public ofBaseApp{
 
 public:
-	
-    void setup();
-    void update();
-    void draw();
 
-    void keyPressed(int key);
+	void setup();
+	void update();
+	void draw();
+
+	void keyPressed(int key);
 
 	ofxOrbbecAstra astra;
 
-    ofVboMesh mesh;
-    ofEasyCam cam;
+	ofVboMesh mesh;
+	ofEasyCam cam;
 
-    bool bDrawPointCloud;
-    bool bPointCloudUseColor;
-    bool bUseRegistration;
+	bool bDrawPointCloud;
+	bool bPointCloudUseColor;
+	bool bUseRegistration;
 
 };
