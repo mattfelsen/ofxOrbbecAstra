@@ -28,7 +28,7 @@ probationFrameCount = 30
 maxFailedTestsInProbationActivePoints = 3
 secondChanceMinDistance = 100.0 #float
 mergePointDistance = 100.0 #mm #float
-maxHandPointUpdatesPerFrame = 10
+maxhandpointUpdatesPerFrame = 10
 
 [segmentation]
 segmentationBandwidthDepthNear = 500.0 #mm #float
