@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxOrbbecAstra.cpp">
+      <Filter>addons\ofxOrbbecAstra\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{8e01e411-c8b0-4870-adce-4d7fa31fa2a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra">
+      <UniqueIdentifier>{41df5916-2118-467b-bab0-bea94d97ed4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\src">
+      <UniqueIdentifier>{016c65b8-17c3-4151-b908-83779f03a982}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs">
+      <UniqueIdentifier>{7a03b6e4-6b9e-43a2-bbb7-b914e21a9d58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra">
+      <UniqueIdentifier>{79d1c8e2-f7cf-4600-a018-95c40cb63eab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include">
+      <UniqueIdentifier>{27f9eca9-1ea0-43a8-90d3-f6c44b81f04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra">
+      <UniqueIdentifier>{f88054a4-71d7-4778-a656-66495fce1476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra\capi">
+      <UniqueIdentifier>{1ad664d6-598b-4db6-9df3-78cecee85112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams">
+      <UniqueIdentifier>{0371ea0d-c961-4f10-bcc9-8117e47901d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra\streams">
+      <UniqueIdentifier>{62de2b02-4c3e-429b-8139-0dfbb68feee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra_core">
+      <UniqueIdentifier>{4236b24a-3d55-40d8-ab35-44084249cf00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi">
+      <UniqueIdentifier>{3bde135b-9d4b-4a2c-8c62-9aecf067ce99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins">
+      <UniqueIdentifier>{b0b43d70-548d-465d-aa73-0a63fba13259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins">
+      <UniqueIdentifier>{f5fc058a-ebbf-4c9d-8456-59e9b32f42c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\common">
+      <UniqueIdentifier>{bdfe8c1f-2cfc-49bc-92eb-e0e9946739ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\common\clock">
+      <UniqueIdentifier>{cb8f0719-cdd7-4f36-99f3-91a3d88d2e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOrbbecAstra\libs\astra\include\common\serialization">
+      <UniqueIdentifier>{25ae5a41-7734-465d-88db-5bb976d3bbeb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxOrbbecAstra.h">
+      <Filter>addons\ofxOrbbecAstra\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\astra.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\Vector.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\Vector2f.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\Vector2i.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\Vector3f.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\Vector3i.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\astra.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\astra_ctypes.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\color_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\color_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\depth_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\depth_parameters.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\depth_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\hand_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\hand_parameters.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\hand_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\image_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\image_parameters.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\image_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\infrared_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\infrared_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\point_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\point_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\skeleton_capi.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\skeleton_parameters.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\skeleton_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\stream_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Color.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\DebugHand.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Depth.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Hand.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Image.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Infrared.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Point.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra\streams\Skeleton.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra\streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\astra_core.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\astra_cxx_make_unique.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\DataStream.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\Frame.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\FrameListener.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamDescription.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamReader.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamServiceProxy.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamSet.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_core.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_defines.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_host_events.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_streamservice_proxy.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_types.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\plugins\astra_plugin.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\plugins\astra_pluginservice_proxy.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\plugins\astra_plugin_callbacks.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\Plugin.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginBase.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginLogging.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginServiceProxy.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginStream.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\SingleBinStream.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\StreamBin.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\StreamCallbackListener.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\StreamEventHandler.hpp">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\clock\Pulser.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\clock\Stdafx.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\clock\Stopwatch.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameInputStream.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameOutputStream.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameStreamReader.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameStreamWriter.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\astra\include\common\serialization\StreamFileModels.h">
+      <Filter>addons\ofxOrbbecAstra\libs\astra\include\common\serialization</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
