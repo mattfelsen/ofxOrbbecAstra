@@ -23,6 +23,7 @@ void ofApp::setup(){
 	astra.initColorStream();
 	astra.initDepthStream();
 	astra.initPointStream();
+	astra.initHandStream();
 }
 
 void ofApp::update(){
@@ -60,8 +61,19 @@ void ofApp::draw(){
 
 	if (!bDrawPointCloud) {
 		ofSetColor(ofColor::white);
-		astra.draw(0, 0);
-		astra.drawDepth(640, 0);
+		astra.drawDepth(0, 0);
+		astra.draw(640, 0);
+
+		for (auto& hand : astra.getHandsDepth()) {
+			auto& pos = hand.second;
+			ofSetColor(ofColor::red);
+			ofDrawCircle(pos, 10);
+
+			stringstream ss;
+			ss << "id: " << hand.first << endl;
+			ss << "pos: " << hand.second;
+			ofDrawBitmapStringHighlight(ss.str(), pos.x, pos.y - 30);
+		}
 	} else {
 		cam.begin();
 		ofEnableDepthTest();
@@ -69,6 +81,18 @@ void ofApp::draw(){
 		ofScale(1.5, 1.5);
 
 		mesh.draw();
+
+
+		for (auto& hand : astra.getHandsWorld()) {
+			auto& pos = hand.second;
+			ofSetColor(ofColor::white);
+			ofDrawCircle(pos, 10);
+
+			stringstream ss;
+			ss << "id: " << hand.first << endl;
+			ss << "pos: " << hand.second;
+			ofDrawBitmapString(ss.str(), pos.x, pos.y - 30, pos.z);
+		}
 
 		ofDisableDepthTest();
 		cam.end();
@@ -80,7 +104,10 @@ void ofApp::draw(){
 	ss << "p: switch between images and point cloud" << endl;
 	ss << "c: toggle point cloud using color image or gradient (";
 	ss << (bPointCloudUseColor ? "color image)" : "gradient)") << endl;
-	ss << "rotate the point cloud with the mouse";
+	ss << "rotate the point cloud with the mouse" << endl << endl;
+
+	ss << "tracked hands: " << astra.getHandsDepth().size() << endl;
+	ss << "try moving your hands in a circle until they are recognized";
 
 	ofSetColor(ofColor::white);
 	ofDrawBitmapStringHighlight(ss.str(), 20, 500);

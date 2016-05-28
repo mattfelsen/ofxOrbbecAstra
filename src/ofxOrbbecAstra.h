@@ -26,6 +26,7 @@ public:
 	void initColorStream();
 	void initDepthStream();
 	void initPointStream();
+	void initHandStream();
 
 	void update();
 	bool isFrameNew();
@@ -41,6 +42,9 @@ public:
 	ofShortPixels& getRawDepth();
 	ofImage& getDepthImage();
 	ofImage& getColorImage();
+
+	unordered_map<int32_t,ofVec2f>& getHandsDepth();
+	unordered_map<int32_t,ofVec3f>& getHandsWorld();
 
 protected:
 
@@ -66,5 +70,8 @@ protected:
 
 	vector<char> depthLookupTable;
 	vector<ofVec3f> cachedCoords;
+
+	unordered_map<int32_t,ofVec2f> handMapDepth;
+	unordered_map<int32_t,ofVec3f> handMapWorld;
 
 };

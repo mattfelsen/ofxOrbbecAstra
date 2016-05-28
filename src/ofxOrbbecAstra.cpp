@@ -103,6 +103,15 @@ void ofxOrbbecAstra::initPointStream() {
 	reader.stream<astra::PointStream>().start();
 }
 
+void ofxOrbbecAstra::initHandStream() {
+	if (!bSetup) {
+		ofLogWarning("ofxOrbbecAstra") << "Must call setup() before initHandStream()";
+		return;
+	}
+
+	reader.stream<astra::HandStream>().start();
+}
+
 void ofxOrbbecAstra::update(){
 	// See on_frame_ready() for more processing
 	bIsFrameNew = false;
@@ -133,6 +142,7 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 	auto colorFrame = frame.get<astra::ColorFrame>();
 	auto depthFrame = frame.get<astra::DepthFrame>();
 	auto pointFrame = frame.get<astra::PointFrame>();
+	auto handFrame = frame.get<astra::HandFrame>();
 
 	if (colorFrame.is_valid()) {
 		colorFrame.copy_to((astra::RgbPixel*) colorImage.getPixels().getData());
@@ -155,6 +165,27 @@ void ofxOrbbecAstra::on_frame_ready(astra::StreamReader& reader,
 
 	if (pointFrame.is_valid()) {
 		pointFrame.copy_to((astra::Vector3f*) cachedCoords.data());
+	}
+
+	if (handFrame.is_valid()) {
+		handMapDepth.clear();
+		handMapWorld.clear();
+		auto& list = handFrame.handpoints();
+
+		for (auto& handPoint : list) {
+			const auto& id = handPoint.tracking_id();
+
+			if (handPoint.status() == HAND_STATUS_TRACKING) {
+				const auto& depthPos = handPoint.depth_position();
+				const auto& worldPos = handPoint.world_position();
+
+				handMapDepth[id] = ofVec2f(depthPos.x, depthPos.y);
+				handMapWorld[id] = ofVec3f(worldPos.x, worldPos.y, worldPos.z);
+			} else {
+				handMapDepth.erase(id);
+				handMapWorld.erase(id);
+			}
+		}
 	}
 }
 
@@ -195,4 +226,12 @@ ofImage& ofxOrbbecAstra::getDepthImage() {
 
 ofImage& ofxOrbbecAstra::getColorImage() {
 	return colorImage;
+}
+
+unordered_map<int32_t,ofVec2f>& ofxOrbbecAstra::getHandsDepth() {
+	return handMapDepth;
+}
+
+unordered_map<int32_t,ofVec3f>& ofxOrbbecAstra::getHandsWorld() {
+	return handMapWorld;
 }
