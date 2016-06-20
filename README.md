@@ -48,4 +48,8 @@ Windows support hopefully coming soon. The libs from the Win32 and x64 SDKs are 
 
 ## Hardware Note – Astra Pro & color data
 
-There is a known issue with the SDK and Astra Pro cameras which does not make the color data available. Trying to start the color stream (i.e. calling `astra.initColorStream()`) will also cause other streams to fail, so you must comment-out this line in the example and/or your projects. The color data is separately available as a standard webcam, so you can use the `ofVideoGrabber` class. However, there color frames may then be slightly out of sync with the depth frames. You can keep an eye on the [Orbbec forums](https://3dclub.orbbec3d.com/) to see the latest.
+There is a known issue with the SDK and Astra Pro cameras which does not make the color data available. Trying to start the color stream (i.e. calling `astra.initColorStream()`) will also cause other streams to fail, so you must comment-out this line in the example and/or your projects.
+
+The color data is separately available as a standard webcam. Rather than using `initColorStream()`, you can use `initVideoGrabber()` which uses an `ofVideoGrabber` under the hood for you.
+
+You can keep an eye on the [Orbbec forums](https://3dclub.orbbec3d.com/) to see the latest.

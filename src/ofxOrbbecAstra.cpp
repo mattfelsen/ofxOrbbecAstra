@@ -112,10 +112,27 @@ void ofxOrbbecAstra::initHandStream() {
 	reader.stream<astra::HandStream>().start();
 }
 
+void ofxOrbbecAstra::initVideoGrabber(int deviceID) {
+	bUseVideoGrabber = true;
+
+	grabber = make_shared<ofVideoGrabber>();
+	grabber->setDeviceID(deviceID);
+	grabber->setup(width, height);
+}
+
 void ofxOrbbecAstra::update(){
 	// See on_frame_ready() for more processing
 	bIsFrameNew = false;
 	astra_temp_update();
+
+	if (bUseVideoGrabber && grabber) {
+		grabber->update();
+		if (grabber->isFrameNew()) {
+			colorImage.setFromPixels(grabber->getPixels());
+			colorImage.mirror(false, true);
+			colorImage.update();
+		}
+	}
 }
 
 void ofxOrbbecAstra::draw(float x, float y, float w, float h){

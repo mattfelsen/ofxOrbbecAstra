@@ -27,6 +27,7 @@ public:
 	void initDepthStream();
 	void initPointStream();
 	void initHandStream();
+	void initVideoGrabber(int deviceID = 0);
 
 	void update();
 	bool isFrameNew();
@@ -67,6 +68,11 @@ protected:
 	ofShortPixels depthPixels;
 	ofImage depthImage;
 	ofImage colorImage;
+
+	// Hack for Astra Pro cameras which only expose color via a webcam/UVC
+	// stream, not through the SDK
+	bool bUseVideoGrabber;
+	shared_ptr<ofVideoGrabber> grabber;
 
 	vector<char> depthLookupTable;
 	vector<ofVec3f> cachedCoords;

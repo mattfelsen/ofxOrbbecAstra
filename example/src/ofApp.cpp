@@ -20,7 +20,13 @@ void ofApp::setup(){
 
 	astra.setup();
 	astra.enableRegistration(bUseRegistration);
+
 	astra.initColorStream();
+	// If you are using an Astra Pro camera and only see a black screen, try
+	// commenting out the above initColorStream() call and use
+	// initVideoGrabber() instead
+//	astra.initVideoGrabber();
+
 	astra.initDepthStream();
 	astra.initPointStream();
 	astra.initHandStream();
@@ -50,7 +56,8 @@ void ofApp::update(){
 				if (bPointCloudUseColor) {
 					mesh.addColor(astra.getColorImage().getColor(x, y));
 				} else {
-					mesh.addColor(ofColor::fromHsb(ofMap(p.z, 0, maxDepth, 0, 255), 255, 255));
+					float hue  = ofMap(p.z, 0, maxDepth, 0, 255);
+					mesh.addColor(ofColor::fromHsb(hue, 255, 255));
 				}
 			}
 		}
