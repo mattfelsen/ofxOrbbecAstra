@@ -19,11 +19,15 @@ ofxOrbbecAstra::ofxOrbbecAstra() {
 	bDepthImageEnabled = true;
 }
 
-ofxOrbbecAstra::~ofxOrbbecAstra(){
+ofxOrbbecAstra::~ofxOrbbecAstra() {
 	astra::terminate();
 }
 
-void ofxOrbbecAstra::setup(const char* ASTRA_DEVICE_URI){
+void ofxOrbbecAstra::setup() {
+	setup("device/default");
+}
+
+void ofxOrbbecAstra::setup(const string& uri) {
 	colorImage.allocate(width, height, OF_IMAGE_COLOR);
 	depthImage.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	depthPixels.allocate(width, height, OF_IMAGE_GRAYSCALE);
@@ -32,7 +36,7 @@ void ofxOrbbecAstra::setup(const char* ASTRA_DEVICE_URI){
 
 	astra::initialize();
 
-	streamset = astra::StreamSet(ASTRA_DEVICE_URI);
+	streamset = astra::StreamSet(uri.c_str());
 	reader = astra::StreamReader(streamset.create_reader());
 
 	bSetup = true;
