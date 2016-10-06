@@ -18,7 +18,10 @@ public:
 	ofxOrbbecAstra();
 	~ofxOrbbecAstra();
 
-	void setup();
+    //For multiple cameras, use "device/sensor0",
+    //"device/sensor1", etc. Otherwise, leave blank.
+    void setup(const char* ASTRA_DEFAULT_DEVICE_URI = "device/default");
+    
 	void enableDepthImage(bool enable);
 	void enableRegistration(bool useRegistration);
 	void setDepthClipping(unsigned short near, unsigned short far);

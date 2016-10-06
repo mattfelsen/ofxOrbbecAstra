@@ -23,7 +23,7 @@ ofxOrbbecAstra::~ofxOrbbecAstra(){
 	astra::terminate();
 }
 
-void ofxOrbbecAstra::setup(){
+void ofxOrbbecAstra::setup(const char* ASTRA_DEFAULT_DEVICE_URI){
 	colorImage.allocate(width, height, OF_IMAGE_COLOR);
 	depthImage.allocate(width, height, OF_IMAGE_GRAYSCALE);
 	depthPixels.allocate(width, height, OF_IMAGE_GRAYSCALE);
@@ -32,7 +32,7 @@ void ofxOrbbecAstra::setup(){
 
 	astra::initialize();
 
-	streamset = astra::StreamSet();
+	streamset = astra::StreamSet(ASTRA_DEFAULT_DEVICE_URI);
 	reader = astra::StreamReader(streamset.create_reader());
 
 	bSetup = true;
