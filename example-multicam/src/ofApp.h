@@ -17,8 +17,6 @@
 #include "ofMain.h"
 #include "ofxOrbbecAstra.h"
 
-
-
 class ofApp : public ofBaseApp{
 
 public:
@@ -29,10 +27,7 @@ public:
 
 	void keyPressed(int key);
 
-	ofxOrbbecAstra astra1;
-	ofxOrbbecAstra astra2;
-	ofxOrbbecAstra astra3;
-
 	bool bUseRegistration;
-
+	vector<ofxOrbbecAstra> cameras;
+	
 };
