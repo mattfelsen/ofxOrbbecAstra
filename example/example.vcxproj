@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>example</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>
+..\..\..\addons\ofxOrbbecAstra\src;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\clock;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>astra.lib;astra_core.lib;astra_core_api.lib;openni_sensor.lib;orbbec_hand.lib;orbbec_xs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform);..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform)\Plugins;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command>robocopy "$(OF_ROOT)/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+robocopy "$(OF_ROOT)/addons/ofxOrbbecAstra/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+if errorlevel 1 exit 0 else exit %errorlevel%</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>
+..\..\..\addons\ofxOrbbecAstra\src;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\clock;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>astra.lib;astra_core.lib;astra_core_api.lib;openni_sensor.lib;orbbec_hand.lib;orbbec_xs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform);..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform)\Plugins;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command>robocopy "$(OF_ROOT)/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+robocopy "$(OF_ROOT)/addons/ofxOrbbecAstra/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+if errorlevel 1 exit 0 else exit %errorlevel%</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>
+..\..\..\addons\ofxOrbbecAstra\src;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\clock;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>astra.lib;astra_core.lib;astra_core_api.lib;openni_sensor.lib;orbbec_hand.lib;orbbec_xs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform);..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform)\Plugins;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command>robocopy "$(OF_ROOT)/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+robocopy "$(OF_ROOT)/addons/ofxOrbbecAstra/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+if errorlevel 1 exit 0 else exit %errorlevel%</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>
+..\..\..\addons\ofxOrbbecAstra\src;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\capi\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra\streams;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\capi\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\astra_core\plugins;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\clock;
+..\..\..\addons\ofxOrbbecAstra\libs\astra\include\common\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>astra.lib;astra_core.lib;astra_core_api.lib;openni_sensor.lib;orbbec_hand.lib;orbbec_xs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform);..\..\..\addons\ofxOrbbecAstra\libs\astra\lib\vs\$(Platform)\Plugins;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command>robocopy "$(OF_ROOT)/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+robocopy "$(OF_ROOT)/addons/ofxOrbbecAstra/export/vs/$(Platform)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+if errorlevel 1 exit 0 else exit %errorlevel%</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ofxOrbbecAstra.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\libs\astra\include\astra\astra.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\astra.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\astra_ctypes.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\color_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\color_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\depth_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\depth_parameters.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\depth_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\hand_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\hand_parameters.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\hand_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\image_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\image_parameters.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\image_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\infrared_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\infrared_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\point_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\point_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\skeleton_capi.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\skeleton_parameters.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\skeleton_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\capi\streams\stream_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Color.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\DebugHand.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Depth.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Hand.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Image.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Infrared.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Point.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\streams\Skeleton.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\Vector.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\Vector2f.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\Vector2i.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\Vector3f.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra\Vector3i.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\astra_core.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\astra_cxx_make_unique.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_core.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_defines.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_host_events.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_streamservice_proxy.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\astra_types.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\plugins\astra_plugin.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\plugins\astra_pluginservice_proxy.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\capi\plugins\astra_plugin_callbacks.h" />
+    <ClInclude Include="..\libs\astra\include\astra_core\DataStream.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\Frame.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\FrameListener.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\Plugin.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginBase.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginLogging.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginServiceProxy.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\PluginStream.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\SingleBinStream.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\StreamBin.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\StreamCallbackListener.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\plugins\StreamEventHandler.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamDescription.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamReader.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamServiceProxy.hpp" />
+    <ClInclude Include="..\libs\astra\include\astra_core\StreamSet.hpp" />
+    <ClInclude Include="..\libs\astra\include\common\clock\Pulser.h" />
+    <ClInclude Include="..\libs\astra\include\common\clock\Stdafx.h" />
+    <ClInclude Include="..\libs\astra\include\common\clock\Stopwatch.h" />
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameInputStream.h" />
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameOutputStream.h" />
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameStreamReader.h" />
+    <ClInclude Include="..\libs\astra\include\common\serialization\FrameStreamWriter.h" />
+    <ClInclude Include="..\libs\astra\include\common\serialization\StreamFileModels.h" />
+    <ClInclude Include="..\src\ofxOrbbecAstra.h" />
+    <ClInclude Include="src\ofApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="icon.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
